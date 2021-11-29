@@ -1,627 +1,248 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
-<head>
-  <link rel="stylesheet" href="perfume.css">
-  <link rel="stylesheet" href="perfume-largescreen.css">
-  <title>Perfume</title>
-  <style>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-
-body{
-  font-size:16px;
-  margin:-0.2px;
-  font-family: "Open Sans", "Gill Sans MT","Calibri Light", sans-serif;
-  overflow-x:hidden;
-}
-a{
-  color:black;
-  text-transform:uppercase;
-  text-decoration:underline;
-}
-address{
-  width:90vw;
-  font-style:normal;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-}
-button{
-  border:none;
-  font-size:1.2em;
-}
-footer{
-  background-color:black;
-  color:white;
-  padding:2em;
-  display:flex;
-  justify-content:space-around;
-}
-form button{
-  display:block;
-  margin-top:0.75em;
-  color:white;
-  background-color:black;
-  border-bottom:3px solid pink;
-  padding:0.4em;
-  transition:box-shadow 0.4s;
-}
-form button:hover{
-  box-shadow: inset 0 0 0 1000px pink;
-}
-input[type=email]{
-  margin-bottom:1em;
-  padding:0.2em;
-  background-color:black;
-  border-radius:10px;
-  font-size:1em;
-  font-family:"Open Sans","Calibri Light",sans-serif;
-}
-input[type=checkbox]{
-  filter: invert(100%) hue-rotate(18deg) brightness(2) saturate(20%);
-}
-h1,h2,button,nav p,.activity-text a{
-  font-family:Georgia;
-  font-weight:normal;
-  text-transform:uppercase;
-  letter-spacing:0.1em;
-}
-h1{
-  display:inline-block;
-  border-bottom:3px solid pink;
-  padding-bottom:20px;
-}
-h2{
-  font-size:2em;
-}
-header{
-  height:75vh;
-  max-height:800px;
-  background: fixed no-repeat url(https://i.pinimg.com/originals/1b/f0/2f/1bf02f96cc6c721281be219edff4d24a.png);
-  background-size:120vw;
-}
-header p{
-  font-family:Georgia, serif;
-  font-style:italic;
-  margin-top:-0.75vh;
-}
-main{
-  padding:10px 0 50px 0;
-  background-color:white;
-  box-shadow:0 -20px 10vh black;
-}
-nav{
-  position:fixed;
-  display:none;
-  width:100vw;
-  background-color:white;
-  box-shadow:0 3px 10px silver;
-  padding:0 1em;
-  color:black;
-}
-nav p{
-  font-size:1.8em;
-}
-p{
-  line-height:1.25em;
-}
-section{
-  margin-top:4em;
-}
-table {
-  border-collapse: separate;
-  border-spacing: 1em 0.5em;
-}
-table a{
-  color:white;
-  text-decoration:none;
-}
-table a:hover{
-  color:lemonchiffon;
-}
-
-.vertically-center{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:start;
-}
-.header-info-wrapper{
-  min-height:15vh;
-  background-color:black;
-  padding:1em 1em 1em;
-  color:white;
-  display:flex;
-  justify-content:space-between;
-}
-.dropdown{
-  position:absolute;
-  right:2em;
-  top:2em;
-  text-align:right;
-}
-.dropdown-icon{
-  font-size:2em;
-  color:pink;
-}
-.dropdown-menu{
-  display:none;
-  margin-top:0.5em;
-}
-.dropdown-menu a{
-  display:block;
-  background-color:white;
-  padding:0.5em;
-  text-align:center;
-  text-decoration:none;
-  transition:background-color 0.1s;
-}
-.dropdown-menu a:hover{
-  background-color:lemonchiffon;
-}
-.dropdown-icon:hover{
-  color:lemonchiffon;
-}
-.dropdown:hover .dropdown-menu{
-  display:block;
-}
-
-.tiles-container{
-  width:90vw;
-  margin:50px auto 0 auto;
-  font-size:1.3em;
-  display:grid;
-  grid-template-rows:1fr 1fr;
-  grid-template-columns:1fr 1fr;
-}
-.tiles-container div{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.tiles-container div p{
-  font-size:16px;
-}
-.tiles-container div a{
-  text-decoration:none;
-}
-.tile{
-  width:35vw;
-  height:35vw;
-  min-width:6em;
-  min-height:6em;
+  <head>
+    <meta charset="utf-8">
+    <title>W01 Gradients & Angles</title>
+    <style>
+      body{
+        overflow-x:hidden;
+      }
+      header{
+        background-image: linear-gradient(100deg,rgba(255, 255, 255, 1),rgba(250, 250, 250, 0));
+        z-index:1;
+        margin:-10px;
+        position:relative;
+        width:100vw;
+        height:42vw;
+        padding:10% 5% 0% 5%;
+      }
+      p{
+        font-family: "Cambria", "Garamond";
+        font-size:16px;
+        margin:20px;
+        padding:10px 30px 10px 30px;
+        line-height:1.25em;
+              }
+      a{
+        color:black;
+        text-decoration:none;
+        }
+      h1,h2,h5{
+        margin:15px;
+        font-family:"Franklin Gothic Medium", "Franklin Gothic", "Gill Sans MS", sans-serif;
+        letter-spacing:2.5px;
+        text-transform:uppercase;
+        }
+      footer{
+        background-color:black;
+        color:rgb(232, 232, 232);
+        margin:30px -10px 0px -10px;
+        padding:20px;
+        width:100%;
+        }
+      nav{
+        z-index:5;
+        position:fixed;
+        background-image:linear-gradient(90deg, rgba(125, 240, 255, 0.6), rgba(207, 116, 252, 0.6));
+        margin:-10px;
+        width:100%;
+        padding:20px;
+        }
+      nav,content h1,h2,h5{
+        text-align:right;
+        }
+      nav h2{
+        text-align:center;
+        }
+      .box{
+        transform: skewY(-8deg);
+        margin:-8px;
+        }
+      .content{
+        font-family: "Cambria", "Garamond";
+        font-size:15px;
+        padding:10px 50px 35px 50px;
+        transform: skewY(8deg);
+        margin:45px 0px 25px 0px;
+        }
+      .blue{
+        background-image:linear-gradient(90deg, rgb(135,255, 255), rgb(173, 165, 250));
+        }
+      .violet{
+        background-image:linear-gradient(90deg, rgb(228, 199, 255), rgb(133, 122, 255));
+        
+        }
+      .indigo{
+        background-image:linear-gradient(90deg, rgb(148, 171, 255), rgb(173, 252, 255));
+        }
+      #imgtop{
+        width:100%;
+        margin:-8px -8px -8px -8px;
+        position:absolute;
+        top:0px;
+        z-index:1;
+        }
+      #heading{
+        text-align:left;
+        width:50%;
+        z-index:2;
+        margin:0px;
+        padding:30px 30px 30px 0px;
+        position:relative;
+        }
+      #heading p{
+        margin:0px;
+        padding:0px 20px 10px 20px;
+        font-family: "Cambria","Garamond";
+        font-size:12px;
+        font-style:italic;
+        width: 110%;
+        }
+      #start-now{
+        padding:15px;
+        background-image:radial-gradient(rgb(250, 255, 150, 0.8), rgb(237, 170, 240, 0.8));
+        max-width:80px;
+        text-align:center;
+        }
+      #start-now:hover{
+        background-color:yellow;
+        }
+      #name{
+        font-size:13px;
+        padding-left:1em;
+        }
+      #social-media{
+        display:flex;
+        justify-content:space-around;
+        margin-left:20px;
+        width:100px;
+        }
+      
+      @media (min-width: 1025px) {
+        p{
+          font-size:20px;
+          padding:10px 50px 10px 50px;
+        }
+        h1{
+          font-size:50px;
+        }
+        h2{
+          font-size:40px;
+          margin:0% 10% 0% 0%;
+        }
+        h5{
+          font-size:20px;
+        }
+        footer{
+          padding:50px;
+        }
+        #heading{
+          padding:40px;
+        }
+        #heading p{
+          font-size:20px;
+          width: 60%;
+        }
+        #linkbox{
+          padding:30px;
+          max-width:100px;
+        }
+        .side{
+          padding:20px;
+          float:right;
+          border-radius:50%;
+        }
+        .box{
+          margin:70px -10px 50px -10px;
+          padding:10px;
+        }
+        .content{
+          padding:2% 10% 5% 10%;
+        }
+        .white-text{
+        margin:10px 10% 0% 10%;
+        }
+      }
+      @media (max-width: 625px){
+        header{
+          min-height:300px;
+          width:auto;
+          }
+        nav{
+            padding:10px;
+        }
+        #imgtop{
+          min-height:300px;
+        }
+        .content{
+          margin:5px -8px 5px -8px;
+        }
+        .box{
+          margin:20px -8px 20px -8px;
+        }
+        .side{
+          padding:20px;
+          float:right;
+          border-radius:50%;
+        }
+      }
+    </style>
+  </head>
   
-  background-size:100%;
-  background-repeat:no-repeat;
-  border-radius:10%;
   
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.tile span{
-  color:white;
-  text-transform:uppercase;
-  text-decoration:none;
-  letter-spacing:0.1em;
-  opacity:0;
-  transition:opacity 0.4s;
-}
-.featured-tile{
-  background-image:url(https://cdn.shopify.com/s/files/1/1338/0845/collections/LuxLSCategoryPage_550x.jpg?v=1557862845);
-}
-.skin-care-tile{
-  background-image:url(https://cdn.shopify.com/s/files/1/0203/8454/products/PCJarw_Texture.jpg?v=1627341683);
-}
-.makeup-tile{
-  background-image:url(https://i.pinimg.com/564x/4f/1c/31/4f1c3164d1dd914c089e1a9b4684efa6.jpg);
-}
-.perfume-tile{
-  background-image: url(https://64.media.tumblr.com/a3463d5e5e7496f11d49619ac796d1a5/499d6e5ab5534136-ff/s1280x1920/528c0e620712ce55172a5de8f57c731982871416.jpg);
-}
-.tile{
-  transition:box-shadow 0.3s;
-}
-.tile:hover{
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.6);
-}
-.tile:hover span{
-  opacity:1;
-}
-
-.feature{
-  width:80vw;
-  padding:0 10vw 0 10vw;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.feature>*{
-  padding-bottom:2em;
-}
-.feature h2{
-  margin-block-end:0;
-  order:-1;
-}
-.feature img{
-  width:80vw;
-}
-.feature button{
-  padding:20px 1em 20px 1em;
-  background-image:linear-gradient(45deg,lemonchiffon,pink);
-  transition:box-shadow 0.3s;
-}
-.feature button:hover{
-  box-shadow: inset 0 0 0 1000px rgba(255,255,255,0.6);
-}
-
-.activity{
-  background-color:black;
-  color:white;
-  min-height:60vw;
-}
-.activity img{
-  width:40vw;
-}
-.activity-text{
-  float:right;
-  width:47vw;
-  height:60vw;
-  margin:-1em 6vw 0 0;
-  font-weight:300;
-  letter-spacing:0.02em;
-}
-.activity-text a{
-  border-bottom:3px solid pink;
-  padding-bottom:2px;
-  color:white;
-  text-decoration:none;
-  transition:border-bottom 0.2s;
-}
-.activity-text a:hover{
-  border-bottom:3px solid lemonchiffon;
-}
-
-.quote{
-  
-  margin:1em 10vw;
-  overflow-x:scroll;
-  padding-bottom:2.5em;
-  font-family:Georgia,serif;
-  display:flex;
-}
-.quote div{
-  margin-right:2em;
-  width:80vw;
-}
-.quote::-webkit-scrollbar {
-  height: 5px;
-}
-.quote::-webkit-scrollbar-thumb {
-  background: #666;
-  border-radius: 5px;
-}
-.quote-content:before{
-  content:"\201C";
-  margin:auto;
-  display:block;
-  font-size:4em;
-  position: relative;
-  width: 0.1px;
-  left: 50%;
-  margin-left: -0.1em;
-}
-.quote-content{
-  width:80vw;
-  padding-top:2.5em;
-  text-align:center;
-  font-family:Georgia, serif;
-  font-size:1.7em;
-}
-.quote-attribution{
-  width:80%;
-  margin:auto;
-  font-size:1.2em;
-  text-align:center;
-}
-.footer-left{
-  width:50vw;
-}
-.footer-left p{
-  font-size:1.4em;
-  font-family:Georgia, serif;
-}
-.footer-right{
-  width:30vw;
-  padding-top:1.2em;
-}
-@media only screen
-  and (max-device-width: 700px)
-  and (-webkit-min-device-pixel-ratio: 2){
-  nav{
-    display:hidden;
-  }
-  header{
-    background-position:0% 30%;
-    min-height:70vh;
-    background-size:150%;
-  }
-  body{
-    font-size:200%;
-  }
-  .feature p{
-    font-size:70%;
-  }
-  .header-info-wrapper p{
-    font-size:100%;
-  }
-  .tiles-container div p{
-    font-size:80%;
-  }
-  table a{
-    font-size:0.85em;
-  }
-}
-@media only screen
-  and (max-device-width: 376px)
-  and (-webkit-min-device-pixel-ratio: 2){
-  .feature p{
-    font-size:47.5%;
-  }
-}
-@media only screen
-  and (max-device-width: 325px)
-  and (-webkit-min-device-pixel-ratio: 2){
-  .feature p{
-    font-size:42.5%;
-  }
-}
-@media only screen
-  and (min-device-width:700px)
-  and (min-width:700px)
-  and (-webkit-min-device-pixel-ratio: 1){
-  nav{
-    display:initial;
-  }
-  header{
-    background-size:100vw;
-    height:70vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-  .header-info-wrapper{
-    width:40vw;
-    height:35vh;
-    padding:3vw;
-    margin:4em 0 0 45vw;
-    background-color:white;
-    color:black;
-  }
-  .header-info,address{
-    width:38vw;
-  }
-  .header-info{
-    margin-top:-2em;
-  }
-  .dropdown{
-    position:fixed;
-    top:1.3em;
-  }
-  .dropdown-icon{
-    display:none;
-  }
-  .dropdown-menu{
-    width:50vw;
-    display:block;
-  }
-  .dropdown-menu a{
-    display:inline-block;
-    text-align:center;
-  }
-  .tiles-container{
-    width:85vw;
-    grid-template-rows:1fr;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-  }
-  .tile{
-    width:14vw;
-    height:14vw;
-  }
-  .feature img{
-    width:60vw;
-  }
-  .activity{
-    min-height:40vw;
-  }
-  .activity img{
-    width:30vw;
-    margin:0 3vw 0 10vw;
-  }
-  .activity-text{
-    width:40vw;
-    height:40vw;
-    margin:1em 8vw 0 0;
-  }
-  .activity-text a{
-    display:block;
-    width:3.7em;
-    margin-top:1.5em;
-    font-size:1.4em;
-  }
-  .quote-content{
-    width:45vw;
-  }
-  .quote-attribution{
-    width:40vw;
-  }
-}
-@media only screen
-  and (min-device-width:1024px)
-  and (min-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1){
-  nav{
-    text-align:center;
-  }
-  .header-info-wrapper{
-    width:30vw;
-    margin:10vh 0 0 55vw;
-  }
-  .header-info,address{
-    width:28vw;
-  }
-  .tiles-container{
-    width:75vw;
-  }
-  .feature {
-    text-align:left;
-    display:grid;
-    justify-items:left;
-    grid-template-columns:4fr 6fr;
-    grid-template-rows:auto;
-    grid-template-areas:"heading picture" "intro picture" "btn picture";
-  }
-  .feature>* {
-    padding-bottom: 0;
-  }
-  .feature h2{
-    grid-area:heading;
-  }
-  .feature p{
-    grid-area:intro;
-  }
-  .feature button{
-    grid-area:btn;
-  }
-  .feature img{
-    grid-area:picture;
-    width:50vw;
-    height:auto;
-    margin-left:5vw;
-  }
-  .activity{
-    min-height:30vw;
-  }
-  .activity img{
-    width:20vw;
-    margin:0 3vw 0 15vw;
-  }
-  .activity-text{
-    width:35vw;
-    height:30vw;
-    margin:0 15vw 0 0;
-  }
-  .quote{
-    overflow:visible;
-  }
-  .quote-content{
-    width:25vw;
-  }
-  .quote-attribution{
-    width:20vw;
-  }
-}
-  </style>
-</head>
-
-<body>
-  <nav>
-    <p>Rosemary</p>
-  </nav>
-  <header>
-    <div class="header-info-wrapper">
-      <div class="header-info vertically-center">
-        <h1>Rosemary</h1>
-        <p>Premium Cosmetics & Perfume. Since 19XX. lorem ipsum dolor quid</p>
-        <address>ins: @irisnviolets | git: @irisssschen</address>
+  <body>
+    <nav id="navbar">
+      <h2>Lorem Ipsum<span id="name">@IRISSSS</span></h2>
+    </nav>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Los_Angeles_with_Mount_Baldy.jpg/1920px-Los_Angeles_with_Mount_Baldy.jpg" alt="top photo" width="700" id="imgtop">
+    <header id="welcome-section">
+      <div id="heading">
+        <h1>Gradients/ Diagonal</h1>
+        <p id="intro">Mirabar insanis conemur in ac allatis ideoque mo. Ente ac meos huic soli vero et.</p>
+        <h5><a id="start-now" href="#" target="_blank">START NOW</a></h5>
       </div>
-      <div class="dropdown">
-        <span class="dropdown-icon">&#9776;</span>
-        <div class="dropdown-menu">
-          <a href="#">Featured</a>
-          <a href="#">Limited</a>
-          <a href="#">Contact us</a>
+    </header>
+    
+    <content>
+      <p class="white-text">
+        <img class="side" src="https://upload.wikimedia.org/wikipedia/commons/f/fd/LadyLiberty02.jpg" alt="Statue of Liberty" width="100" height="100">
+        Rem cumque quorum hic nullas deo mox essent ignota. Aciem ne vi nasci modus ac talem alias datur. Ut causam causae ne se ea operae. Uti objective jam qua argumenta delusisse nam. Habeo novum fas pla horum nos certo sic fecto verum. Accurate omnesque illamque videntur frigoris pla nia vigiliam sum. At ad unam scio id visa loco nolo etsi. Rem cumque quorum hic nullas deo mox essent ignota. Aciem ne vi nasci modus ac talem alias datur. Ut causam causae ne se ea operae. Uti objective jam qua argumenta delusisse nam. Habeo novum fas pla horum nos certo sic fecto verum. Accurate omnesque illamque videntur frigoris pla nia vigiliam sum. At ad unam scio id visa loco nolo etsi.
+        <img class="side" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Unisphere_Flushing_Meadows_Queens.jpg" width="100" height="100"> Timenda at dicamne in ineunte.</p>
+      <p class="white-text">Cau cui sua est imbecillia deceperunt reducantur concipitur. Age expertus non cadavere judiciis. Difficilia ita falsitatis fal ostenditur percipitur meo cohibendam. Intra gi quasi im factu potui illam ob. An me dicitur suppono ha adeoque ab sentire. Serie novas is an verba istud se ipsam. Eae infigatur ita creatione conceptum deo. Percipitur tot ego constanter res perfectius tractandae. Ii nequidem profecto ut aberrare at mentibus id. Originis quidquid cessarem id et gi. </p>
+
+      <div class="box blue">
+        <div class="content">
+          <h2>Lorem Ipsum</h2>
+              <p>Eo licet at co nempe ipsas patet. Magnitudo rem sequentia vim cum effectrix mentemque excludere. Bere nego tur jam quod mihi deum. Certo erant rei nulla omnes mea. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. Eo licet at co nempe ipsas patet. Magnitudo rem sequentia vim cum effectrix mentemque excludere. Bere nego tur jam quod mihi deum. Certo erant rei nulla omnes mea. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu.  </p>
         </div>
       </div>
-    </div>
-  </header>
-  <main>
-    <section class="tiles-container">
-      <div>
-        <a href="#"><div class="tile featured-tile"><span>Shop</span></div></a>
-        <p>Featured</p>
+      <h2>Lorem Ipsum</h2>
+        <p class="white-text">Inde hic mem dico usu actu idem alia. Ausint latera sidera duo rei. Non sum deo aeque venit scopo tactu cujus talia. To ha sensum si semper secedo re vitari. Jam communi sae admodum aliquem ita imo. Solvendae judicandi de evidentia et desuescam. Obvium infixa co an regula. Inde hic mem dico usu actu idem alia. Ausint latera sidera duo rei. Non sum deo aeque venit scopo tactu cujus talia. To ha sensum si semper secedo re vitari. Jam communi sae admodum aliquem ita imo. Solvendae judicandi de evidentia et desuescam. Obvium infixa co an regula.Inde hic mem dico usu actu idem alia. Ausint latera sidera duo rei. Non sum deo aeque venit scopo tactu cujus talia. To ha sensum si semper secedo re vitari. Jam communi sae admodum aliquem ita imo. Solvendae judicandi de evidentia et desuescam. Obvium infixa co an regula.</p>
+      <div class="box violet">
+        <div class="content">
+          <h2>Lorem Ipsum</h2>
+              <p>Se eo placidae pendeant inveniri efficiat to. Casu hinc illa jam qui idem novo luce. Sufficit advenire ad ut aberrare liberius ob de totamque convenit. Ex ea at ii progressum referuntur repugnaret secernitur. Mei reducit ibi assidue claudam ita ponamus sim remotam tamquam. Tentassem nullamque corporeis ha re gi membrorum. Primis manebo hic sex sui dignum. Educta legant eo quoque sumpta videri genere ac. Lectores lectorum locusque nam ens secundum desinere odoratum. Capram nullos vis posita eas. </p>
+        </div>
       </div>
-      <div>
-        <a href="#"><div class="tile skin-care-tile"><span>Shop</span></div></a>
-        <p>Skin Care</p>
+      <h2>Lorem Ipsum</h2>
+        <p class="white-text">Cur habebo natura veluti genera paucos nec usu negans. Tacitus at corpori positis ex numerum actione. Gi ab materialis respondere desiderant explicatur. To caloris motarum similis ideoque attendo si gallico. Judicia sim nul iii mei subesse sumptum constat optimum. Creet caput edita pacto sap his rum.  Cur habebo natura veluti genera paucos nec usu negans. Tacitus at corpori positis ex numerum actione. Gi ab materialis respondere desiderant explicatur. To caloris motarum similis ideoque attendo si gallico. Judicia sim nul iii mei subesse sumptum constat optimum. Creet caput edita pacto sap his rum. </p>
+      <div class="box indigo">
+        <div class="content">
+          <h2>Lorem Ipsum</h2>
+            <p>Remotam to praeter ut nutriri usitate. Ego gnum quid rari sit. Nunquam sim componi brachia nostris has inferri similis fas. Ea occurrunt conjectus me id ad distincta medicinam. Age dum ante quia dico inde. Operis nequit primum aërem mem duo putare fit omnium. Imo his deprehendi existentia est qua cohaereant facillimam. Cau caeteri necesse quietem hac ceteris. Rebus multi ibi autho una nempe ipsas. </p>
+        </div>
       </div>
-      <div>
-        <a href="#"><div class="tile makeup-tile"><span>Shop</span></div></a>
-        <p>Makeup</p>
+      <h2>Lorem Ipsum</h2>
+        <p class="white-text">Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista. Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista. Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista. Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista.</p>
+    </content>
+    
+    <footer>
+      <div id="social-media">
+        <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="facebook" width="30"></a>
+        <a href="https://www.twitter.com"><img src="https://upload.wikimedia.org/wikipedia/en/6/60/Twitter_Logo_as_of_2021.svg" alt="twitter" width="30"></a>
       </div>
-      <div>
-        <a href="#"><div class="tile perfume-tile"><span>Shop</span></div></a>
-        <p>Perfume</p>
-      </div>
-    </section>
-    <section class="feature">
-      <img src="https://leoncechenal.com/wp-content/uploads/2021/01/best_french_iconic_perfumes.png" alt="feature-perfume">
-      <h2>Feature</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur nisl sed quam eleifend ultricies. Suspendisse vel massa at lectus molestie interdum. Nunc condimentum, ante in malesuada facilisis, tellus leo dictum enim, in fringilla massa elit a erat. </p>
-      <button>More</button>
-    </section>
-    <section class="activity">
-      <img src="https://www.bing.com/images/blob?bcid=SzqUC99jNl4DOI8Nae07ixbQsjl8.....5A" alt="activity-gothic-style">
-      <div class="activity-text vertically-center">
-        <h2>Activity</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur nisl sed quam eleifend ultricies. Suspendisse vel massa at lectus molestie interdum. Nunc condimentum, ante in malesuada facilisis. <a href="#">Start</a></p>
-      </div>
-    </section>
-    <section class="quote">
-      <div>
-        <p class="quote-content"><span class="quotation-mark">&ldquo;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur nisl sed quam eleifend ultricies.<span class="quotation-mark">&rdquo;</span></p>
-        <p class="quote-attribution">-- John Li, expert in cosmetics</p>
-      </div>
-      <div>
-        <p class="quote-content"><span class="quotation-mark">&ldquo;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur nisl sed quam eleifend ultricies.<span class="quotation-mark">&rdquo;</span></p>
-        <p class="quote-attribution">-- John Li, expert in cosmetics</p>
-      </div>
-      <div>
-        <p class="quote-content"><span class="quotation-mark">&ldquo;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur nisl sed quam eleifend ultricies.<span class="quotation-mark">&rdquo;</span></p>
-        <p class="quote-attribution">-- John Li, expert in cosmetics</p>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="footer-left">
-      <p>Connect with us! Sign up for Email updates.</p>
-      <form>
-        <input id="email" type="email" placeholder="Email" required>
-        <br>
-        <input type="checkbox" id="discounts" name="get-discounts" value="true" checked>
-        <label for="discounts">Get our discount coupons!</label>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-    <div class="footer-right">
-      <table>
-        <tr>
-          <td><a>Account</a></td>
-          <td><a>FAQ</a></td>
-        </tr>
-        <tr>
-          <td><a>Payment Methods</a></td>
-          <td><a>Shipping Options</a></td>
-        </tr>
-        <tr>
-          <td><a>Career</a></td>
-          <td><a>Privacy</a></td>
-        </tr>
-        <tr>
-          <td><a>Learn More</a></td>
-          <td></td>
-        </tr>
-      </table>
-    </div>
-  </footer>
-</body>
+      <p>Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia.Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia.Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia.Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet consectetur nulla, nec finibus tortor. Nullam sed leo facilisis, sodales urna ac, efficitur justo. Donec mollis, quam at sagittis tincidunt, lorem enim gravida eros, vitae cursus justo dui non massa. In efficitur porta vulputate. Phasellus scelerisque lectus felis, eget dapibus leo vulputate et. Vestibulum sed ipsum quis libero tincidunt gravida nec rhoncus nibh. Quisque lacinia vestibulum enim sit amet elementum. Curabitur vulputate, velit eget aliquam posuere, nisi justo ultrices libero, ac fermentum turpis tortor ut purus. Suspendisse aliquam gravida nunc placerat porta. Vivamus varius elit urna, sagittis faucibus est feugiat et. Nulla eu lorem id diam facilisis lobortis facilisis vitae ipsum. Aliquam erat volutpat. Aliquam id lectus vitae massa ornare laoreet in ut eros. Proin laoreet nibh id turpis porttitor tempus. Praesent lectus diam, sollicitudin eu turpis posuere, condimentum blandit ante.</p>
+    </footer>
+  </body>
 </html>
