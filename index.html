@@ -27,7 +27,7 @@
         color:black;
         text-decoration:none;
         }
-      h1,h2,h5{
+      h1,h2,button{
         margin:15px;
         font-family:"Franklin Gothic Medium", "Franklin Gothic", "Gill Sans MS", sans-serif;
         font-weight:normal;
@@ -48,12 +48,12 @@
         margin:-10px;
         width:100%;
         padding:20px;
-        }
-      nav,content h1,h2,h5{
-        text-align:right;
-        }
-      nav h2{
         text-align:center;
+        font-size:1.6em;
+        text-transform:uppercase;
+        }
+      content h1,h2,h5{
+        text-align:right;
         }
       .box{
         transform: skewY(-8deg);
@@ -100,13 +100,14 @@
         width: 110%;
         }
       #start-now{
+        border:none;
         padding:15px;
         background-image:radial-gradient(rgb(250, 255, 150), rgb(237, 170, 240));
         max-width:80px;
         text-align:center;
         }
       #start-now:hover{
-        background-image:radial-gradient(rgb(237, 170, 240), rgb(250, 255, 150));
+        background:yellow;
         }
       #name{
         font-size:13px;
@@ -194,7 +195,7 @@
   
   <body>
     <nav id="navbar">
-      <h2>Lorem Ipsum<span id="name">@irisnviolets</span></h2>
+      <p>Lorem Ipsum<span id="name">@irisnviolets</span></p>
     </nav>
     
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Los_Angeles_with_Mount_Baldy.jpg/1920px-Los_Angeles_with_Mount_Baldy.jpg" alt="" width="700" id="imgtop">
@@ -202,7 +203,7 @@
       <div id="heading">
         <h1>Gradients / Diagonal</h1>
         <p id="intro">Mirabar insanis conemur in ac allatis ideoque mo. Ente ac meos huic soli vero et.</p>
-        <h5><a id="start-now" href="#" target="_blank">START NOW</a></h5>
+        <button>START NOW</button>
       </div>
     </header>
     
