@@ -1,178 +1,347 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Gradients & Angles</title>
-    <style>
-      body{
-        overflow-x:hidden;
-        margin:-0.2px;
-        font-family:"Cambria", "Garamond";
-        font-size:18px;
+<head>
+  <title>Earthy Tones</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Open+Sans:wght@400;500&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+    body{
+      margin:-0.2px;
+      background-color:#feefdf;
+      background-color:seashell;
+      color:#77756b;
+      font-family:"Open Sans",sans-serif;
+      padding-bottom:30px;
+      display:flex;
+      flex-direction:column;
+    }
+    a{
+      color:#9f372f;
+    }
+    a:hover{
+      color:#90674b;
+    }
+    button{
+      border:3px solid #90674b;
+      background-color:seashell;
+      padding:18px 15px;
+      color:#90674b;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+    }
+    button:hover{
+      background-color:#90674b;
+      color:white;
+    }
+    h1,h2,h3{
+      color:#90674b;
+      font-family:"Playfair Display",Georgia,serif;
+      font-weight:500;
+    }
+    h2{
+      display:inline;
+    }
+    header{
+      order:1;
+      margin-bottom:50px;
+    }
+    header a{
+      text-decoration:none;
+    }
+    header img{
+      width:100%;
+    }
+    header div{
+      width:90%;
+      margin:auto;
+    }
+    header div p svg{
+      margin:2px 7px;
+    }
+    main{
+      width:92%;
+      margin:auto;
+      margin-bottom:20px;
+      order:3;
+    }
+    .tag{
+      margin:0 4px;
+      padding:0.1em 0.3em;
+      color:#77756b;
+    }
+    .tag:nth-of-type(3n+0){
+      background-color:#bfcfd2;
+    }
+    .tag:nth-of-type(3n+1){
+      background-color:#eabfad;
+    }
+    .tag:nth-of-type(3n+2){
+      background-color:#eed1a0;
+    }
+    .header-info{
+      margin-left:-8px;
+      display:flex;
+      flex-direction:row;
+      align-content:center;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      font-size:0.85em;
+    }
+    .locator{
+      margin-left:0.45em;
+      border-radius:50%;
+      text-decoration:none;
+      padding:0.2em 0.5em;
+      font-size:1.5em;
+      color:#90674b;
+      font-family:Arial, sans-serif;
+    }
+    .locator::after{
+      content:"\0023";
+      
+    }
+    .locator:nth-of-type(3n+0){
+      background-color:#bfcfd2;
+    }
+    .locator:nth-of-type(3n+1){
+      background-color:#eabfad;
+    }
+    .locator:nth-of-type(3n+2){
+      background-color:#edd1a0;
+    }
+    .locator:hover{
+      color:white;
+      background-color:#90674b;
+    }
+    aside{
+      margin:auto;
+      width:92vw;
+    }
+    aside h2{
+      font-size:1.8em;
+    }
+    #contents{
+      order:2;
+      width:350px;
+      background-color:white;
+      box-shadow:0 0 5px #aaa;
+      padding:1em;
+      line-height:1.5em;
+    }
+    #contents a{
+      color:#77756b;
+    }
+    #contents a:hover{
+      color:#90674b;
+      text-decoration:underline;
+    }
+    #contents li:hover{
+      color:#90674b;
+    }
+    #recommended{
+      order:4;
+    }
+    .rec-wrapper{
+      display:flex;
+      flex-wrap:wrap;
+    }
+    .rec-article{
+      width:330px;
+      height:200px;
+      margin:20px 10px 0 10px;
+      background-color:white;
+      box-shadow:0 0 10px #aaa;
+      border:none;
+      border-radius:2px;
+      display:flex;
+    }
+    .rec-article .img-wrapper{
+      width:45%;
+      overflow:hidden;
+    }
+    .rec-article .rec-label{
+      width:55%;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:1.3em;
+      padding:0 1em;
+    }
+    .rec-article .img-wrapper img{
+      height:275px;
+    }
+    #social-media-wrapper{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:180px;
+      margin-right:0;
+      float:right;
+      background-color:white;
+      box-shadow:0 0 5px #aaa;
+      padding:10px;
+    }
+    #social-media{
+      width:120px;
+      display:flex;
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:baseline;
+      filter: invert(10%) brightness(1.2) saturate(70%);
+    }
+    @media (max-width:576px){
+      .rec-article{
+        margin:auto;
+        margin-top:20px;
       }
-      h1,h2,button,nav{
-        font-family:"Franklin Gothic Medium", "Franklin Gothic", "Gill Sans MS", sans-serif;
-        font-weight:normal;
-        letter-spacing:0.1em;
-        text-transform:uppercase;
+    }
+    @media (min-width:996px){
+      body{
+        margin:0 6vw;
+        display:grid;
+        column-gap:3vw;
+        align-items: start;
+        grid-template-rows:auto;
+        grid-template-columns:400px 1fr;
+        grid-template-areas:"header header" "contents main" "recommended main";
       }
       header{
-        margin-bottom:60px;
-        background:no-repeat 0% 0% / auto 100% linear-gradient(100deg,rgba(255, 255, 255, 0.7),rgba(250, 250, 250, 0.7)), url(https://static.onecms.io/wp-content/uploads/sites/28/2021/02/19/new-york-city-evening-NYCTG0221.jpg);
-        height:70vh;
-        display:flex;
-        align-items:center;
+        width:70vw;
+        margin:5vh 9vw;
+        grid-area:header;
       }
-      header div{
-        text-align:center;
-        width:90vw;
-        margin:auto;
+      aside{
+        margin-top:1em;
+        width:auto;
       }
-      nav{
-        position:fixed;
-        background-image:linear-gradient(90deg, rgba(125, 240, 255, 0.6), rgba(207, 116, 252, 0.6));
-        width:100vw;
-        padding:20px;
-        text-align:center;
-        font-size:1.5em;
+      #contents{
+        grid-area:contents;
       }
-      main h2{
-        text-align:right;
-        margin-right:5vw;
+      #recommended{
+        grid-area:recommended;
       }
-      footer{
-        margin-top:60px;
-        background-color:black;
-        color:white;
-        padding:1.5em;
+      main{
+        grid-area:main;
+        margin:0;
       }
-      #start-now{
-        border:none;
-        padding:25px;
-        background-image:radial-gradient(rgba(250, 255, 150, 0.9), rgb(237, 170, 240, 0.9));
-        text-align:center;
-        font-size:1em;
-      }
-      #start-now:hover{
-        background-color:yellow;
-      }
-      #social-media{
-        width:7em;
-        display:flex;
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:baseline;
-      }
-      .white-text{
-        width:90vw;
-        margin:auto;
-      }
-      .lead-image{
-        width:7em;
-        height:7em;
-        border-radius:50%;
-        float:right;
-        margin:0.5em;
-      }
-      .box{
-        transform: skewY(-8deg);
-        margin:3em 0;
-        padding:2.5em 2.5em 2.5em 3em;
-      }
-      .content{
-        transform: skewY(8deg);
-      }
-      .blue{
-        background-image:linear-gradient(90deg, rgb(135,255, 255), rgb(173, 165, 250));
-      }
-      .violet{
-        background-image:linear-gradient(90deg, rgb(228, 199, 255), rgb(133, 122, 255));
-      }
-      .indigo{
-        background-image:linear-gradient(90deg, rgb(148, 171, 255), rgb(173, 252, 255));
-      }
-      @media (min-width:705px){
-        body{
-          font-size:22px;
-        }
-        .box{
-          margin:6em 0;
-          padding:4em 8em;
-        }
-        .white-text{
-          width:80vw;
-          margin:auto;
-        }
-        footer{
-          margin-top:80px;
-          padding:5vw;
-        }
-        header{
-         background:no-repeat 50% 50% / 100% auto linear-gradient(100deg,rgba(255, 255, 255, 1),rgba(250, 250, 250, 0.2)), url(https://static.onecms.io/wp-content/uploads/sites/28/2021/02/19/new-york-city-evening-NYCTG0221.jpg);
-        }
-        header div{
-          width:45vw;
-          margin:5vw;
-          text-align:left;
-        }
-      }
-    </style>
-  </head>
-  
-  <body>
-    <nav id="navbar">
-      Lorem Ipsum <small>@irisnviolets</small>
-    </nav>
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://www.asianjunkie.com/wp-content/uploads/2018/11/IZONELaVieEnRosePerformance.png">
+    <div>
+      <p class="header-info"><a class="tag" href="#">Label 1 </a><a class="tag" href="#">Label 2 </a><a class="tag" href="#">Label 3</a></p>
+      <h1>Color Trends for 2022: A Return to Warm, Earthy Tones</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros nunc, vestibulum vel nunc vel, tempor mollis elit. Morbi eu augue laoreet nibh fringilla fringilla. Mauris id luctus ligula, sed interdum mi. Vestibulum leo est, luctus et ornare vitae, tristique at lorem.</p>
+      <p class="header-info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/></svg>
+        <a href="https://www.instagram.com/irisnviolets/" target="_blank">@irisnviolets</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/><path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/></svg> 2021-12-11
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg> 5 minute read
+      </p>
+      <button>Add to reading list</button>
+    </div>
+  </header>
+  <aside id="contents">
+    <h2>Navigation</h2>
+    <ul id="navigation">
+      
+    </ul>
+   </aside>
+  <aside id="recommended">
+    <h2>Recommended</h2>
+    <div class="rec-wrapper">
     
-    <header>
-      <div>
-        <h1>Gradients / Diagonal</h1>
-        <p id="intro">Mirabar insanis conemur in ac allatis ideoque mo. Ente ac meos huic soli vero et.</p>
-        <button id="start-now">START NOW</button>
+    <div class="rec-article">
+      <div class="img-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/LuxLSCategoryPage_550x.jpg?v=1557862845" alt="Lipstick">
       </div>
-    </header>
-    
-    <main>
-      <p class="white-text">
-        <img class="lead-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fd/LadyLiberty02.jpg" alt="Statue of Liberty">
-        Rem cumque quorum hic nullas deo mox essent ignota. Aciem ne vi nasci modus ac talem alias datur. Ut causam causae ne se ea operae. Uti objective jam qua argumenta delusisse nam. Habeo novum fas pla horum nos certo sic fecto verum. Accurate omnesque illamque videntur frigoris pla nia vigiliam sum. At ad unam scio id visa loco nolo etsi. Rem cumque quorum hic nullas deo mox essent ignota. Accurate omnesque illamque videntur frigoris pla nia vigiliam sum. At ad unam scio id visa loco nolo etsi.
-        <img class="lead-image" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Unisphere_Flushing_Meadows_Queens.jpg" alt="Architecture"> Timenda at dicamne in ineunte.</p>
-      <p class="white-text">Cau cui sua est imbecillia deceperunt reducantur concipitur. Age expertus non cadavere judiciis. Difficilia ita falsitatis fal ostenditur percipitur meo cohibendam. Intra gi quasi im factu potui illam ob. An me dicitur suppono ha adeoque ab sentire. Serie novas is an verba istud se ipsam. Eae infigatur ita creatione conceptum deo. Percipitur tot ego constanter res perfectius tractandae. Ii nequidem profecto ut aberrare at mentibus id. Originis quidquid cessarem id et gi. </p>
-
-      <div class="box blue">
-        <div class="content">
-          <h2>Lorem Ipsum</h2>
-              <p>Eo licet at co nempe ipsas patet. Magnitudo rem sequentia vim cum effectrix mentemque excludere. Bere nego tur jam quod mihi deum. Certo erant rei nulla omnes mea. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. Eo licet at co nempe ipsas patet. Magnitudo rem sequentia vim cum effectrix mentemque excludere. Bere nego tur jam quod mihi deum. Certo erant rei nulla omnes mea. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. </p>
-        </div>
+      <p class="rec-label">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </div><!--end of card-->
+    <div class="rec-article">
+      <div class="img-wrapper">
+        <img src="https://i.pinimg.com/564x/4f/1c/31/4f1c3164d1dd914c089e1a9b4684efa6.jpg" alt="Make up">
       </div>
-      <h2>Lorem Ipsum</h2>
-        <p class="white-text">Inde hic mem dico usu actu idem alia. Ausint latera sidera duo rei. Non sum deo aeque venit scopo tactu cujus talia. To ha sensum si semper secedo re vitari. Jam communi sae admodum aliquem ita imo. Solvendae judicandi de evidentia et desuescam. Obvium infixa co an regula. Inde hic mem dico usu actu idem alia. Ausint latera sidera duo rei. Non sum deo aeque venit scopo tactu cujus talia. To ha sensum si semper secedo re vitari. Jam communi sae admodum aliquem ita imo. Solvendae judicandi de evidentia et desuescam. Obvium infixa co an regula.Inde hic mem dico usu actu idem alia. Ausint latera sidera duo rei. Non sum deo aeque venit scopo tactu cujus talia. To ha sensum si semper secedo re vitari. Jam communi sae admodum aliquem ita imo. Solvendae judicandi de evidentia et desuescam. Obvium infixa co an regula. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. </p>
-      <div class="box violet">
-        <div class="content">
-          <h2>Lorem Ipsum</h2>
-              <p>Se eo placidae pendeant inveniri efficiat to. Casu hinc illa jam qui idem novo luce. Sufficit advenire ad ut aberrare liberius ob de totamque convenit. Ex ea at ii progressum referuntur repugnaret secernitur. Mei reducit ibi assidue claudam ita ponamus sim remotam tamquam. Tentassem nullamque corporeis ha re gi membrorum. Primis manebo hic sex sui dignum. Educta legant eo quoque sumpta videri genere ac. Lectores lectorum locusque nam ens secundum desinere odoratum. Capram nullos vis posita eas. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu.  </p>
-        </div>
+      <p class="rec-label">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+    </div><!--end of card-->
+    <div class="rec-article">
+      <div class="img-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0203/8454/products/PCJarw_Texture.jpg?v=1627341683" alt="Skin care">
       </div>
-      <h2>Lorem Ipsum</h2>
-        <p class="white-text">Cur habebo natura veluti genera paucos nec usu negans. Tacitus at corpori positis ex numerum actione. Gi ab materialis respondere desiderant explicatur. To caloris motarum similis ideoque attendo si gallico. Judicia sim nul iii mei subesse sumptum constat optimum. Creet caput edita pacto sap his rum.  Cur habebo natura veluti genera paucos nec usu negans. Tacitus at corpori positis ex numerum actione. Gi ab materialis respondere desiderant explicatur. To caloris motarum similis ideoque attendo si gallico. Judicia sim nul iii mei subesse sumptum constat optimum. Creet caput edita pacto sap his rum. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. </p>
-      <div class="box indigo">
-        <div class="content">
-          <h2>Lorem Ipsum</h2>
-            <p>Remotam to praeter ut nutriri usitate. Ego gnum quid rari sit. Nunquam sim componi brachia nostris has inferri similis fas. Ea occurrunt conjectus me id ad distincta medicinam. Age dum ante quia dico inde. Operis nequit primum aërem mem duo putare fit omnium. Imo his deprehendi existentia est qua cohaereant facillimam. Cau caeteri necesse quietem hac ceteris. Rebus multi ibi autho una nempe ipsas. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. </p>
-        </div>
-      </div>
-      <h2>Lorem Ipsum</h2>
-        <p class="white-text">Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista. Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista. Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista. Du et addantur rationes ut perpauca. Ex velut vulgo pappo majus ha illam eo vocem. Mo ab talis se si inter somno locum nulla. Iis iii rari omni tur ista. Dem ens praevidere quaecunque assignetur imaginabar hac non. Praecipue sufficere age judicandi hae adjuvetis praestari eae. Tes quo ibi uti objectioni perspicuae indefinite aliquandiu. </p>
-    </main>
-    
-    <footer>
+      <p class="rec-label">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+    </div><!--end of card-->
+    </div>
+  </aside>
+  <main>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros nunc, vestibulum vel nunc vel, tempor mollis elit. Morbi eu augue laoreet nibh fringilla fringilla. Mauris id luctus ligula, sed interdum mi. Vestibulum leo est, luctus et ornare vitae, tristique at lorem. Praesent posuere arcu in nibh hendrerit tempor. Aliquam eget nisl vel neque sagittis sollicitudin. Aenean at est vitae nisl ornare condimentum vel id lacus. Curabitur dignissim tortor non sem ultricies dictum. Mauris tristique rutrum nibh vel pharetra. Integer sagittis, est vitae pharetra scelerisque, ex nulla facilisis risus, vel auctor eros risus ac dui.</p>
+    <h2>Introduction</h2>
+    <p>
+    Suspendisse potenti. Ut a blandit dolor. Ut non semper enim. Sed porttitor, tortor vel congue volutpat, mi nibh ultricies turpis, a faucibus lectus risus id neque. Cras imperdiet dapibus vehicula. Duis ut sapien ut orci luctus vestibulum. Sed ac urna a tortor mattis efficitur eget ut eros. Pellentesque dignissim consectetur massa, sit amet pellentesque felis ultricies sed. Nulla facilisi. Aenean metus orci, elementum in tincidunt a, porta vel justo. Praesent <a href="#">lorem ipsum dolor</a> convallis pharetra elit, sed sollicitudin purus faucibus ullamcorper.</p>
+    <h3>Sub heading</h3>
+    <p>Aenean elementum ligula libero. Nulla mattis mollis ligula, hendrerit laoreet mi convallis vitae. Morbi vitae tristique libero, a tempus ante. Nulla egestas libero at sem maximus hendrerit.
+    </p>
+    <h3>Sub heading 2</h3>
+    <p>Aliquam posuere quam est, quis bibendum odio aliquam efficitur. Morbi ultricies, eros nec consequat ultricies, ex est tristique nibh, sed accumsan orci nunc vitae nulla. Nullam rutrum imperdiet mollis.</p>
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>
+    Aliquam id vehicula libero. Nullam a venenatis velit, nec scelerisque ligula. Nunc eget sagittis nisl. Fusce mollis mi ex, a dignissim nisl egestas in. Duis non metus in eros vehicula venenatis. In hac habitasse platea dictumst. Donec enim ante, iaculis et lobortis vel, convallis suscipit dui. Donec et bibendum urna.
+    </p>
+    <h2>Another section</h2>
+    <p>
+    Vivamus eu pharetra magna. Phasellus a orci tristique, tincidunt libero non, vestibulum augue. Quisque interdum orci vitae magna convallis, in varius erat consectetur. Pellentesque in tellus vitae elit finibus eleifend. Integer nec eros metus. Integer ac lacus ex. Integer <a href="#">scelerisque porta</a> interdum. Phasellus cursus, odio porttitor blandit egestas, sem libero fringilla mi, vel tincidunt dolor massa at elit.
+    </p>
+    <h2>Conclusion</h2>
+    <p>
+    Maecenas purus elit, mattis vitae libero et, scelerisque consequat metus. Donec vitae felis cursus, faucibus lacus vitae, maximus tellus. Cras ullamcorper purus in elit egestas convallis. Nunc sagittis dapibus nulla non ornare. Sed placerat tortor ut nibh sagittis, vel imperdiet felis varius. In hac habitasse platea dictumst. Nunc in egestas felis. Curabitur eget lacus erat. Quisque tempus dolor vel erat tincidunt, eget maximus felis efficitur. Nunc est libero, faucibus eu faucibus vitae, scelerisque id sapien. Aliquam posuere quam est, quis bibendum odio aliquam efficitur. Morbi ultricies, eros nec consequat ultricies, ex est tristique nibh, sed accumsan orci nunc vitae nulla. Nullam rutrum imperdiet mollis.
+    </p>
+    <div id="social-media-wrapper">
+      <span>SHARE</span>
       <div id="social-media">
         <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="facebook" width="30" title="Facebook"></a>
-        <a href="https://www.twitter.com"><img src="https://upload.wikimedia.org/wikipedia/en/6/60/Twitter_Logo_as_of_2021.svg" alt="twitter" width="30" title="Twitter"></a>
+        <a href="https://www.twitter.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/1920px-Twitter-logo.svg.png" alt="twitter" width="30" title="Twitter"></a>
         <a href="https://www.instagram.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/300px-Instagram_logo_2016.svg.png" alt="instagram" width="30" title="Instagram"></a>
+        </div>
       </div>
-      <p>Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia.Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia.Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia.Vitae porro ha nulli ex nasci an du omnem. Scribi operae vim his vocant qualis somnia. Ut sit amet consectetur nulla, nec finibus tortor. Nullam sed leo facilisis, sodales urna ac, efficitur justo. Donec mollis, quam at sagittis tincidunt, lorem enim gravida eros, vitae cursus justo dui non massa. In efficitur porta vulputate. Phasellus scelerisque lectus felis, eget dapibus leo vulputate et. Vestibulum sed ipsum quis libero tincidunt gravida nec rhoncus nibh. </p>
-    </footer>
-  </body>
+  </main>
+  <script>
+    var i, locator, sec, secContent, newSec, newSecContent, newSecLine, newIndentedList;
+    var temp;
+    var main = document.getElementsByTagName("main")[0];
+    var navigation = document.getElementById("navigation");
+    var heading2 = main.getElementsByTagName("h2");
+    var heading3 = main.getElementsByTagName("h3");
+    for (i=0; i<heading2.length; i++){
+      heading2[i].className+="heading";
+      locator = document.createElement("a");
+      locator.className += "locator";
+      heading2[i].after(locator);
+    }
+    for (i=0; i<heading3.length; i++){
+      heading3[i].className+="heading";
+    }
+    var headings = document.getElementsByClassName("heading");
+    for (i=0; i<headings.length; i++){
+      sec = headings[i];
+      secContent = sec.textContent;
+      newSecContent = document.createTextNode(secContent);
+      secContent = "sec-"+secContent.replace(/ /g,"-");
+      sec.id = secContent;
+      newSec = document.createElement("a");
+      newSec.href = "#"+secContent;
+      newSec.appendChild(newSecContent);
+      newSecLine = document.createElement("li");
+      newSecLine.appendChild(newSec);
+      if(headings[i].tagName=="H2"){
+        navigation.appendChild(newSecLine);
+        sec.nextSibling.href = "#"+secContent;
+      }
+      if(headings[i].tagName=="H3"){
+        newIndentedList = document.createElement("ul");
+        newIndentedList.appendChild(newSecLine);
+        navigation.appendChild(newIndentedList);
+      }
+     
+    }
+  </script>
+</body>
 </html>
