@@ -1,4 +1,4 @@
 # irisssschen.github.io
-For webpage templates
+For web design
 
-Current: [Gradients & Angles](https://irisssschen.github.io/)
+Current: [Earthy Tones](https://irisssschen.github.io/)
