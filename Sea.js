@@ -26,7 +26,7 @@ for (var a=1; a<dtb[key].des.length; a++){
 randomPortal.innerHTML += '<img class="full-bleed-phone" src="' + dtb[key].imgbg[0] + '" alt="' + dtb[key].imgbg[1] + '"><div class="loc-info horizontally-center"><p class="loc-name">' + dtb[key].loc +
   '</p><div class="add-to-wishlist"><span><a class="keyword">#' + dtb[key].key[0] + '</a><a class="keyword">#'+ dtb[key].key[1] +'</a></span><div class="add-button vertically-center ' + dtb[key].loc.replace(/ /g, "-") + '">+</div><span></span></div></div>' + paragraphChunk +
   '<div class="testimonial horizontally-center"><p class="quote-content"><span class="quotation-mark">&ldquo;</span>' +
-  dtb[key].rev[0] + '<span class="quotation-mark">&rdquo;</span></p><div class="quote-photo-wrapper horizontally-center vertically-center"><img class="quote-photo" src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" alt="User icon"></div><p class="quote-attribution">'+dtb[key].rev[1] + '</p></div>';
+  dtb[key].rev[0] + '<span class="quotation-mark">&rdquo;</span></p><div class="quote-photo-wrapper horizontally-center vertically-center"><img class="quote-photo" src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" alt="User icon"></div><p class="quote-attribution">-- '+ dtb[key].rev[1] + '</p></div>';
 
 var newEl;
 var cardContainer = document.getElementsByClassName("card-container")[0];
