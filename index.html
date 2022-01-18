@@ -1,347 +1,570 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Earthy Tones</title>
+  <title>Unravel | Find Your Next Destination</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Open+Sans:wght@400;500&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Open+Sans:wght@400;500&family=Playfair+Display:wght@500;600;700;800&display=swap');
     body{
       margin:-0.2px;
-      background-color:#feefdf;
-      background-color:seashell;
-      color:#77756b;
       font-family:"Open Sans",sans-serif;
-      padding-bottom:30px;
-      display:flex;
-      flex-direction:column;
+      font-weight:400;
+      overflow-x:hidden;
     }
     a{
-      color:#9f372f;
+      color:#428282;
+      cursor:pointer;
     }
     a:hover{
-      color:#90674b;
-    }
-    button{
-      border:3px solid #90674b;
-      background-color:seashell;
-      padding:18px 15px;
-      color:#90674b;
-      text-transform:uppercase;
-      letter-spacing:0.1em;
-    }
-    button:hover{
-      background-color:#90674b;
-      color:white;
+      color:#666;
     }
     h1,h2,h3{
-      color:#90674b;
-      font-family:"Playfair Display",Georgia,serif;
-      font-weight:500;
+      margin-block-end:0;
+    }
+    h1{
+      text-align:center;
+      font-family:"Playfair Display","Times New Roman", serif;
+      font-weight:800;
     }
     h2{
-      display:inline;
+      font-family:"Playfair Display", sans-serif;
+      font-weight:800;
+      font-size:1.7em;
+      letter-spacing:0.04em;
     }
     header{
-      order:1;
-      margin-bottom:50px;
+      width:100vw;
+      height:70vh;
+      min-height:500px;
+      background-image:url(https://pbs.twimg.com/media/FFKaH83VIAELIf-?format=jpg&name=medium);
+      background-position:100% 0%;
+      background-repeat:no-repeat;
     }
-    header a{
-      text-decoration:none;
+    input:focus{
+      outline-color:silver;
     }
-    header img{
-      width:100%;
-    }
-    header div{
-      width:90%;
-      margin:auto;
-    }
-    header div p svg{
-      margin:2px 7px;
+    input[type=checkbox]:checked{
+      filter: invert(100%) hue-rotate(110deg) brightness(2) saturate(10%);
+      outline:black;
     }
     main{
-      width:92%;
+      width:90vw;
       margin:auto;
-      margin-bottom:20px;
-      order:3;
+      margin-bottom:50px;
     }
-    .tag{
-      margin:0 4px;
-      padding:0.1em 0.3em;
-      color:#77756b;
+    p{
+      font-size:0.9em;
     }
-    .tag:nth-of-type(3n+0){
-      background-color:#bfcfd2;
+    section {
+      margin-top:30px;
     }
-    .tag:nth-of-type(3n+1){
-      background-color:#eabfad;
+    section > p {
+      margin:auto;
+      width:90vw;
     }
-    .tag:nth-of-type(3n+2){
-      background-color:#eed1a0;
-    }
-    .header-info{
-      margin-left:-8px;
-      display:flex;
-      flex-direction:row;
-      align-content:center;
-      text-transform:uppercase;
-      letter-spacing:0.1em;
-      font-size:0.85em;
-    }
-    .locator{
-      margin-left:0.45em;
-      border-radius:50%;
-      text-decoration:none;
-      padding:0.2em 0.5em;
-      font-size:1.5em;
-      color:#90674b;
-      font-family:Arial, sans-serif;
-    }
-    .locator::after{
-      content:"\0023";
-      
-    }
-    .locator:nth-of-type(3n+0){
-      background-color:#bfcfd2;
-    }
-    .locator:nth-of-type(3n+1){
-      background-color:#eabfad;
-    }
-    .locator:nth-of-type(3n+2){
-      background-color:#edd1a0;
-    }
-    .locator:hover{
+    #navbar{
+      width:96vw;
+      height:3vh;
+      min-height:50px;
+      position: sticky;
+      top:0;
+      background-color:black;
       color:white;
-      background-color:#90674b;
-    }
-    aside{
-      margin:auto;
-      width:92vw;
-    }
-    aside h2{
-      font-size:1.8em;
-    }
-    #contents{
-      order:2;
-      width:350px;
-      background-color:white;
-      box-shadow:0 0 5px #aaa;
-      padding:1em;
-      line-height:1.5em;
-    }
-    #contents a{
-      color:#77756b;
-    }
-    #contents a:hover{
-      color:#90674b;
-      text-decoration:underline;
-    }
-    #contents li:hover{
-      color:#90674b;
-    }
-    #recommended{
-      order:4;
-    }
-    .rec-wrapper{
-      display:flex;
-      flex-wrap:wrap;
-    }
-    .rec-article{
-      width:330px;
-      height:200px;
-      margin:20px 10px 0 10px;
-      background-color:white;
-      box-shadow:0 0 10px #aaa;
-      border:none;
-      border-radius:2px;
-      display:flex;
-    }
-    .rec-article .img-wrapper{
-      width:45%;
-      overflow:hidden;
-    }
-    .rec-article .rec-label{
-      width:55%;
-      font-family:"Playfair Display",Georgia,serif;
-      font-size:1.3em;
-      padding:0 1em;
-    }
-    .rec-article .img-wrapper img{
-      height:275px;
-    }
-    #social-media-wrapper{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      width:180px;
-      margin-right:0;
-      float:right;
-      background-color:white;
-      box-shadow:0 0 5px #aaa;
-      padding:10px;
-    }
-    #social-media{
-      width:120px;
-      display:flex;
+      padding:8px 2vw 5px;
       flex-direction:row;
       justify-content:space-between;
       align-items:baseline;
-      filter: invert(10%) brightness(1.2) saturate(70%);
+      z-index:2;
     }
-    @media (max-width:576px){
-      .rec-article{
-        margin:auto;
-        margin-top:20px;
+    nav span{
+      font-size:1.8em;
+      font-family:"Playfair Display","Times New Roman", serif;
+      font-weight:800;
+    }
+    footer {
+      background: black;
+      width:100vw;
+      min-height: 200px;
+      padding:10px 0;
+    }
+    footer table,
+    footer p {
+      color: white;
+    }
+    footer table th {
+      text-align: left;
+      padding: 5px;
+    }
+    footer table td {
+      padding: 5px;
+    }
+    footer > *{
+      margin:20px;
+    }
+    .vertically-center{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .horizontally-center{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .aria-only{
+      display:none;
+    }
+    @media only reader{
+      .aria-only{
+        display:block;
       }
     }
-    @media (min-width:996px){
-      body{
-        margin:0 6vw;
-        display:grid;
-        column-gap:3vw;
-        align-items: start;
-        grid-template-rows:auto;
-        grid-template-columns:400px 1fr;
-        grid-template-areas:"header header" "contents main" "recommended main";
+    .link-b{
+      color:#b3cdcd;
+      text-decoration:none;
+    }
+    .link-b:hover{
+      color:#ccc;
+    }
+    .searchbar{
+      display:none;
+      border:none;
+      height:20px;
+      resize:none;
+      background-color:black;
+      border-bottom:2px solid #428282;
+      padding:5px 0;
+      color:white;
+      font-size:16px;
+      font-family:"Open Sans", sans-serif;
+    }
+    .searchbar::placeholder{
+      color:white;
+    }
+    .searchbar:focus{
+      outline:none;
+    }
+    .wishlist-icon-wrapper{
+      align-self:center;
+    }
+    .wishlist-icon{
+      height:40px;
+      width:40px;
+      filter:invert(100%);
+      transition:filter 0.2s;
+    }
+    .wishlist-icon:hover{
+      filter: invert(0%);
+      background-color:white;
+    }
+    .lead{
+      background-color:white;
+      margin:auto;
+      width:70vw;
+      padding:0 3vw;
+      height:55vh;
+      min-height:370px;
+      border-radius:20px;
+    }
+    .login-form>*{
+      display:block;
+      margin-top:2vh;
+    }
+    .username,.password{
+      width:40vw;
+      border:none;
+      box-shadow:-1px 1px 4px #aaa;
+      border-radius:10px;
+      padding:10px;
+    }
+    .login-form button{
+      width:30vw;
+      padding:15px 10px;
+      border-radius:30px;
+      border:none;
+      background-color:black;
+      color:white;
+      transition:background-color 0.2s;
+    }
+    .login-form button:hover{
+      background-color:#428282;
+    }
+    .proceed{
+      width:65vw;
+      font-family:"Open Sans", sans-serif;
+      font-size:0.8em;
+      color:#aaa;
+      text-align:center;
+    }
+    .overview h3{
+      color:#428282;
+    }
+    #explore{
+      transition:width 0.2s;
+    }
+    .card-container{
+      margin:0 -15px 20px;
+      display:flex;
+      flex-wrap:wrap;
+      flex-direction:row;
+      justify-content:center;
+    }
+    .card{
+      margin:auto;
+      margin:20px 10px 0 10px;
+      width:340px;
+      height:275px;
+      box-shadow:2px 0 10px #aaa;
+      border-radius:2px;
+      display:flex;
+    }
+    .card .img-wrapper{
+      width:50%;
+      overflow:hidden;
+    }
+    .card .img-wrapper img{
+      height:275px;
+    }
+    .card-label{
+      width:50%;
+      margin:15px;
+    }
+    .keyword, .keyword:hover{
+      color:#004f9c;
+    }
+    .add-to-wishlist{
+      margin-top:7px;
+      display:flex;
+      align-items:center;
+    }
+    .add-to-wishlist-inline{
+      display:inline;
+    }
+    .add-button-inline{
+      display:inline;
+    }
+    .add-to-wishlist span{
+      font-size:0.9em;
+    }
+    .add-to-wishlist .add-button{
+      margin-right:5px;
+      height:15px;
+      width:15px;
+      padding:2.5px 4.5px 4.5px 2.5px;
+      border:1.5px solid black;
+      border-radius:50%;
+      text-align:center;
+      font-size:1.8em;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .add-button:hover{
+      background-color:black;
+      color:white;
+      animation:add 0.2s forwards;
+    }
+    @keyframes add{
+      0% {
+        background-color:white;
+        color:black;
       }
-      header{
-        width:70vw;
-        margin:5vh 9vw;
-        grid-area:header;
-      }
-      aside{
-        margin-top:1em;
-        width:auto;
-      }
-      #contents{
-        grid-area:contents;
-      }
-      #recommended{
-        grid-area:recommended;
-      }
-      main{
-        grid-area:main;
-        margin:0;
+      100% {
+        background-color:black;
+        color:white;
       }
     }
+    .button-more {
+      margin:auto;
+      border: 1px solid #428282;
+      background-color:white;
+      padding: 15px 1em;
+      color:#428282;
+      font-family: "Open Sans",sans-serif;
+      text-transform:uppercase;
+      font-size:1.1em;
+      transition: background-color 0.2s;
+    }
+    .button-more:hover {
+      background-color:#428282;
+      color:white;
+    }
+    .full-bleed-phone {
+      width:100vw;
+      margin:20px 0;
+    }
+    .loc-info{
+      margin-bottom:25px;
+      text-align:center;
+    }
+    .loc-info .add-button {
+      margin-left:5px;
+    }
+    .loc-info .keyword::after{
+      content:'\26AC';
+      margin:0 3.5px 0 5px;
+      color:black;
+    }
+    .loc-info .loc-name{
+      font-family:"Playfair display", "Times New Roman", serif;
+      font-weight:bold;
+      font-size:1.5em;
+    }
+    .testimonial{
+      margin-top:1.5em;
+      width:80vw;
+      text-align:center;
+    }
+    .quote-content:before{
+      content:"\201C";
+      margin:auto;
+      display:block;
+      font-size:4em;
+      line-height:0.5em;
+      position: relative;
+      width: 0.1px;
+      left: 50%;
+      margin-left: -0.1em;
+      color:#777;
+    }
+    .quote-content{
+      font-family:"Playfair Display","Times New Roman", serif;
+      font-size:1.7em;
+      font-weight:500;
+    }
+    .quotation-mark{
+      font-size:1.1em;
+    }
+    .quote-photo-wrapper{
+      width:50px;
+      height:50px;
+      margin-bottom:20px;
+      border-radius:50%;
+      overflow:hidden;
+    }
+    .quote-photo{
+      height:60px;
+    }
+    .quote-attribution{
+      width:80%;
+      margin:auto;
+    }
+    .wishlist {
+      position: fixed;
+      overflow-y:scroll;
+      top:0;
+      right:0;
+      z-index:1;
+      width:0;
+      height:0;
+      background-color:white;
+      box-shadow:-5px 5px 10px #aaa;
+      padding:50px 0 0;
+      transition: height 0.5s;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .show-wishlist {
+      height:66vh;
+      width:100vw;
+    }
+    .wishlist-icon-selected{
+      filter: invert(0%);
+      background-color:white;
+    }
+    .wishlist .card{
+      animation:card-appear 0.3s ease-in;
+    }
+    @keyframes card-appear{
+      0%{
+        opacity:0;
+      }
+      100%{
+        opacity:1;
+      }
+    }
+  @media (min-width: 768px){
+    footer {
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+    }
+    .wishlist {
+      transition:width 0.5s;
+    }
+    .show-wishlist {
+      width:400px;
+      height:97vh;
+    }
+  }
+  @media (min-width: 996px){
+    a, span, p, div, button, input{
+      font-size:17px;
+    }
+    navbar a{
+      font-size:17px;
+    }
+    .proceed span, .proceed a, .lead p, .card p, .card a, .card span{
+      font-size:15px;
+    }
+    h2{
+      font-size:2em;
+    }
+    .searchbar{
+      display:block;
+    }
+    header{
+      background-image:url(https://cdn.shopify.com/s/files/1/0285/1316/products/m2201_1s_Calming-seafoam-green-aerial-ocean-wave-wall-mural-Ocean-Escape_Mural-Pattern.jpg?v=1616096265);
+      background-position:50% 0%;
+      background-size:115% auto;
+    }
+    .lead{
+      width:300px;
+      margin-left:5vw;
+    }
+    .username,.password{
+      width:250px;
+    }
+    .login-form button{
+      width:200px;
+    }
+    .proceed{
+      width:auto;
+    }
+    .overview{
+      display:flex;
+    }
+    .overview > div {
+      margin: 0 5px;
+      width:32%;
+    }
+    section > p {
+      width:80vw;
+    }
+    .full-bleed-phone {
+      width:60vw;
+      margin:20px auto;
+    }
+    .testimonial{
+      width:60vw;
+    }
+    footer > p {
+      min-width:400px;
+      max-width:700px;
+    }
+  }
+  
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://www.asianjunkie.com/wp-content/uploads/2018/11/IZONELaVieEnRosePerformance.png">
-    <div>
-      <p class="header-info"><a class="tag" href="#">Label 1 </a><a class="tag" href="#">Label 2 </a><a class="tag" href="#">Label 3</a></p>
-      <h1>Color Trends for 2022: A Return to Warm, Earthy Tones</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros nunc, vestibulum vel nunc vel, tempor mollis elit. Morbi eu augue laoreet nibh fringilla fringilla. Mauris id luctus ligula, sed interdum mi. Vestibulum leo est, luctus et ornare vitae, tristique at lorem.</p>
-      <p class="header-info">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/></svg>
-        <a href="https://www.instagram.com/irisnviolets/" target="_blank">@irisnviolets</a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/><path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/></svg> 2021-12-11
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg> 5 minute read
-      </p>
-      <button>Add to reading list</button>
+  <nav id="navbar" class="vertically-center">
+    <span>Unravel.</span>
+    <a class="link-b">Trending</a>
+    <a class="link-b">Explore</a>
+    <a class="link-b">Tips</a>
+    <input type="text" class="searchbar" placeholder="Search">
+    <a class="wishlist-icon-wrapper"><img class="wishlist-icon" src="https://static.thenounproject.com/png/3551002-200.png" alt="View wishlist"></a>
+  </nav>
+  <header class="vertically-center">
+    <div class="lead horizontally-center vertically-center">
+      <h1>Find your next destination.</h1>
+      <form class="login-form horizontally-center">
+        <input type="text" placeholder="Username" class="username">
+        <input type="password" placeholder="Password" class="password">
+        <button type="submit">SIGN UP</button>
+        <div class="proceed">
+          <input type="checkbox">
+          <span>By proceeding, I abide to the <a>Terms and Conditions</a></span>
+        </div>
+      </form>
+      <p>Already a member? <a>Log in</a></p>
     </div>
   </header>
-  <aside id="contents">
-    <h2>Navigation</h2>
-    <ul id="navigation">
-      
-    </ul>
-   </aside>
-  <aside id="recommended">
-    <h2>Recommended</h2>
-    <div class="rec-wrapper">
-    
-    <div class="rec-article">
-      <div class="img-wrapper">
-        <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/LuxLSCategoryPage_550x.jpg?v=1557862845" alt="Lipstick">
-      </div>
-      <p class="rec-label">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-    </div><!--end of card-->
-    <div class="rec-article">
-      <div class="img-wrapper">
-        <img src="https://i.pinimg.com/564x/4f/1c/31/4f1c3164d1dd914c089e1a9b4684efa6.jpg" alt="Make up">
-      </div>
-      <p class="rec-label">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-    </div><!--end of card-->
-    <div class="rec-article">
-      <div class="img-wrapper">
-        <img src="https://cdn.shopify.com/s/files/1/0203/8454/products/PCJarw_Texture.jpg?v=1627341683" alt="Skin care">
-      </div>
-      <p class="rec-label">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-    </div><!--end of card-->
-    </div>
+  <aside class="wishlist">
+    <div></div>
   </aside>
   <main>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros nunc, vestibulum vel nunc vel, tempor mollis elit. Morbi eu augue laoreet nibh fringilla fringilla. Mauris id luctus ligula, sed interdum mi. Vestibulum leo est, luctus et ornare vitae, tristique at lorem. Praesent posuere arcu in nibh hendrerit tempor. Aliquam eget nisl vel neque sagittis sollicitudin. Aenean at est vitae nisl ornare condimentum vel id lacus. Curabitur dignissim tortor non sem ultricies dictum. Mauris tristique rutrum nibh vel pharetra. Integer sagittis, est vitae pharetra scelerisque, ex nulla facilisis risus, vel auctor eros risus ac dui.</p>
-    <h2>Introduction</h2>
-    <p>
-    Suspendisse potenti. Ut a blandit dolor. Ut non semper enim. Sed porttitor, tortor vel congue volutpat, mi nibh ultricies turpis, a faucibus lectus risus id neque. Cras imperdiet dapibus vehicula. Duis ut sapien ut orci luctus vestibulum. Sed ac urna a tortor mattis efficitur eget ut eros. Pellentesque dignissim consectetur massa, sit amet pellentesque felis ultricies sed. Nulla facilisi. Aenean metus orci, elementum in tincidunt a, porta vel justo. Praesent <a href="#">lorem ipsum dolor</a> convallis pharetra elit, sed sollicitudin purus faucibus ullamcorper.</p>
-    <h3>Sub heading</h3>
-    <p>Aenean elementum ligula libero. Nulla mattis mollis ligula, hendrerit laoreet mi convallis vitae. Morbi vitae tristique libero, a tempus ante. Nulla egestas libero at sem maximus hendrerit.
-    </p>
-    <h3>Sub heading 2</h3>
-    <p>Aliquam posuere quam est, quis bibendum odio aliquam efficitur. Morbi ultricies, eros nec consequat ultricies, ex est tristique nibh, sed accumsan orci nunc vitae nulla. Nullam rutrum imperdiet mollis.</p>
-    <h2>Lorem Ipsum Dolor</h2>
-    <p>
-    Aliquam id vehicula libero. Nullam a venenatis velit, nec scelerisque ligula. Nunc eget sagittis nisl. Fusce mollis mi ex, a dignissim nisl egestas in. Duis non metus in eros vehicula venenatis. In hac habitasse platea dictumst. Donec enim ante, iaculis et lobortis vel, convallis suscipit dui. Donec et bibendum urna.
-    </p>
-    <h2>Another section</h2>
-    <p>
-    Vivamus eu pharetra magna. Phasellus a orci tristique, tincidunt libero non, vestibulum augue. Quisque interdum orci vitae magna convallis, in varius erat consectetur. Pellentesque in tellus vitae elit finibus eleifend. Integer nec eros metus. Integer ac lacus ex. Integer <a href="#">scelerisque porta</a> interdum. Phasellus cursus, odio porttitor blandit egestas, sem libero fringilla mi, vel tincidunt dolor massa at elit.
-    </p>
-    <h2>Conclusion</h2>
-    <p>
-    Maecenas purus elit, mattis vitae libero et, scelerisque consequat metus. Donec vitae felis cursus, faucibus lacus vitae, maximus tellus. Cras ullamcorper purus in elit egestas convallis. Nunc sagittis dapibus nulla non ornare. Sed placerat tortor ut nibh sagittis, vel imperdiet felis varius. In hac habitasse platea dictumst. Nunc in egestas felis. Curabitur eget lacus erat. Quisque tempus dolor vel erat tincidunt, eget maximus felis efficitur. Nunc est libero, faucibus eu faucibus vitae, scelerisque id sapien. Aliquam posuere quam est, quis bibendum odio aliquam efficitur. Morbi ultricies, eros nec consequat ultricies, ex est tristique nibh, sed accumsan orci nunc vitae nulla. Nullam rutrum imperdiet mollis.
-    </p>
-    <div id="social-media-wrapper">
-      <span>SHARE</span>
-      <div id="social-media">
-        <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="facebook" width="30" title="Facebook"></a>
-        <a href="https://www.twitter.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/1920px-Twitter-logo.svg.png" alt="twitter" width="30" title="Twitter"></a>
-        <a href="https://www.instagram.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/300px-Instagram_logo_2016.svg.png" alt="instagram" width="30" title="Instagram"></a>
+    <section class="overview">
+      <h2 class="aria-only">About us</h2>
+      <div>
+        <h3>WHO we are</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nulla ex, faucibus vel vulputate at, vehicula sit amet dui. Maecenas non semper enim. Donec lacinia malesuada urna eu vestibulum. Donec convallis interdum erat, faucibus semper urna tincidunt vitae. </p>
+      </div>
+      <div>
+        <h3>WHAT we do</h3>
+        <p>Nunc luctus augue libero, eget sagittis sem venenatis vitae. Pellentesque id tellus neque. Suspendisse eget consequat justo. Sed facilisis urna aliquet nulla dictum, malesuada volutpat metus cursus. Vivamus pellentesque cursus mi, nec posuere lorem malesuada sed. Donec non molestie lorem. Cras cursus eget nulla eu accumsan. Etiam condimentum commodo risus vitae aliquet.</p>
+      </div>
+      <div>
+        <h3>WHY we matter</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nulla ex, faucibus vel vulputate at, vehicula sit amet dui. Maecenas non semper enim. Donec lacinia malesuada urna eu vestibulum. Donec convallis interdum erat, faucibus semper urna tincidunt vitae. </p>
+      </div>
+    </section>
+    <section id="explore" class="horizontally-center">
+      <h2>Explore</h2>
+      <div class=" card-container">
+      
+      </div>
+      <button class="button-more">View more</button>
+    </section>
+    <section class="horizontally-center">
+      <h2>Featured</h2>
+      <img class="full-bleed-phone" src="https://www.iucn.org/sites/dev/files/content/images/2020/shutterstock_1458128810.jpg" alt="landscape">
+      <div class="loc-info horizontally-center">
+        <p class="loc-name">Tarvisio</p>
+        <div class="add-to-wishlist">
+          <span>
+            <a class="keyword">#nature</a>
+            <a class="keyword">#wild</a>
+          </span>
+          <div class="add-button vertically-center Tarvisio">+</div>
+          <span></span>
         </div>
       </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget purus ut libero eleifend finibus sit amet a dui. Mauris ac lacus varius, imperdiet magna nec, vestibulum justo. Quisque sodales congue eleifend. Phasellus ut scelerisque lectus. Aenean et luctus arcu. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam lacinia, est a commodo finibus, erat magna ultrices turpis, vitae congue felis urna faucibus odio.</p>
+      <p>Mauris auctor felis mauris, euismod egestas nisi fermentum eget. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi eu tellus libero. Maecenas ac leo a risus rutrum suscipit ut id nisl. Praesent maximus velit vel tellus interdum condimentum. Cras blandit ultrices justo eget sodales. Aenean porta et ipsum a luctus. Praesent urna sem, consectetur non mauris sit amet, finibus finibus nisl. Pellentesque eget metus purus.</p>
+      <p>Phasellus ipsum felis, ullamcorper vel finibus a, aliquet at massa. Maecenas ornare nibh ut nunc porta consequat a eget lacus. Suspendisse a mi ante. Morbi sit amet sem leo. Suspendisse scelerisque erat maximus odio maximus volutpat. Vestibulum porttitor tortor sed est pharetra efficitur. Praesent fringilla finibus ex, vel sollicitudin dolor pharetra et. Maecenas tristique mollis efficitur. Quisque volutpat leo ut nisi lacinia, id fringilla lorem venenatis. Praesent rhoncus blandit leo eu porta. Vestibulum lacus lectus, posuere a rhoncus ut, cursus ut risus. Morbi cursus ullamcorper justo et aliquam. Sed eleifend erat non sapien iaculis, vel varius nulla tincidunt. Nulla dictum egestas ipsum, ut ornare velit dapibus vitae.</p>
+      <div class="testimonial horizontally-center">
+        <p class="quote-content"><span class="quotation-mark">&ldquo;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce augue augue, sodales eget ex eu, posuere aliquam ante. Quisque efficitur dui eget feugiat semper.<span class="quotation-mark">&rdquo;</span></p>
+        <div class="quote-photo-wrapper horizontally-center vertically-center">
+          <img class="quote-photo" src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" alt="User Icon">
+        </div>
+        <p class="quote-attribution">-- John Lee, 8</p>
+      </div>
+    </section>
+    <section id="random" class="horizontally-center">
+      <h2>Random Portal</h2>
+    </section>
   </main>
-  <script>
-    var i, locator, sec, secContent, newSec, newSecContent, newSecLine, newIndentedList;
-    var temp;
-    var main = document.getElementsByTagName("main")[0];
-    var navigation = document.getElementById("navigation");
-    var heading2 = main.getElementsByTagName("h2");
-    var heading3 = main.getElementsByTagName("h3");
-    for (i=0; i<heading2.length; i++){
-      heading2[i].className+="heading";
-      locator = document.createElement("a");
-      locator.className += "locator";
-      heading2[i].after(locator);
-    }
-    for (i=0; i<heading3.length; i++){
-      heading3[i].className+="heading";
-    }
-    var headings = document.getElementsByClassName("heading");
-    for (i=0; i<headings.length; i++){
-      sec = headings[i];
-      secContent = sec.textContent;
-      newSecContent = document.createTextNode(secContent);
-      secContent = "sec-"+secContent.replace(/ /g,"-");
-      sec.id = secContent;
-      newSec = document.createElement("a");
-      newSec.href = "#"+secContent;
-      newSec.appendChild(newSecContent);
-      newSecLine = document.createElement("li");
-      newSecLine.appendChild(newSec);
-      if(headings[i].tagName=="H2"){
-        navigation.appendChild(newSecLine);
-        sec.nextSibling.href = "#"+secContent;
-      }
-      if(headings[i].tagName=="H3"){
-        newIndentedList = document.createElement("ul");
-        newIndentedList.appendChild(newSecLine);
-        navigation.appendChild(newIndentedList);
-      }
-     
-    }
-  </script>
+  <footer>
+    <div>
+      <table>
+        <thead><tr>
+          <th>About</th>
+          <th>Contact</th>
+          <th>Discover</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td><a class="link-b" href="#">Our team</a></td>
+          <td><a class="link-b" href="#">Help center</a></td>
+          <td><a class="link-b" href="#">Portal</a></td>
+        </tr>
+        <tr>
+          <td><a class="link-b" href="#">Our mission</a></td>
+          <td><a class="link-b" href="#">Email</a></td>
+          <td><a class="link-b" href="#">Unravel</a></td>
+        </tr>
+        <tr>
+          <td><a class="link-b" href="#">Our impact</a></td>
+          <td><a class="link-b" href="https://www.instagram.com/irisnviolets/">Instagram</a></td>
+          <td><a class="link-b" href="#">Others</a></td>
+        </tr>
+        </tbody></table>
+        <p>Copyright 2022 4D Unravel</p>
+      </div>
+      <p>Unravel is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet erat justo. Vivamus in mauris non nibh sollicitudin aliquet. Praesent vel tristique massa, quis rhoncus est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce rutrum sit amet velit vel suscipit. Curabitur eu tellus vitae enim lobortis elementum. </p>
+    </footer>
+    <script src="Sea.js"></script>
 </body>
 </html>
