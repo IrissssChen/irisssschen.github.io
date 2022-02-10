@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Visual-Spatial Memory Experiment</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<style>
+    body{
+      margin:-0.2px;
+    }
+    #ctrl div {
+      position:absolute;
+      width:100px;
+      height:100px;
+      border-radius:50%;
+      background-color:white;
+    }
+    .screen{
+      top:5px;
+      left:5px;
+      position:relative;
+      z-index:0;
+      width:350px;
+      height:650px;
+      background-color:black;
+      padding:5px;
+      border-radius:0;
+      color:white;
+      font-family:sans-serif;
+      font-size:1.5em;
+      letter-spacing:0.2em;
+      
+      display:flex;
+      flex-direction:column;
+      align-items: center;
+      justify-content: center;
+      text-align:center;
+    }
+    
+    #ctrlc{
+      position:absolute;
+      
+      display:none;
+      z-index:999;
+      background-color:black;
+    }
+    button{
+      margin-top:15px;
+      border:none;
+      border-radius:0.3em;
+      background-color:white;
+      padding:0.4em;
+      text-transform:uppercase;
+      font-size:1em;
+      letter-spacing:0.15em;
+      transition:background-color 0.2s, color 0.2s;
+    }
+    button:hover{
+      background-color:black;
+      color:white;
+      border:2px solid white;
+      margin-top:11px;
+    }
+	</style>
+</head>
+<body>
+  <div class="screen" id="ctrl"></div>
+  <div class="screen cover" id="ctrlc"></div>
+<script>
+  // drawNew()function cr. mohit-chawla @ github
+  // Game cr. Purple Development https://www.facebook.com/PurpleDevelopment/
+  var screenWidth = 350;
+  var screenHeight = 650;
+  var unitHeight =5,
+  	unitWidth =5;
+  
+  var X_grids_count = screenWidth/unitWidth,
+  	Y_grids_count = screenHeight/unitHeight;
+  
+  var gridArray = [];
+  for(i=0;i<X_grids_count;i++){
+  	gridArray[i] = [];
+  	for(j=0;j<Y_grids_count;j++){
+  		gridArray[i][j]=0;
+  	}
+  }
+  
+  // Function for drawing new circle
+  var max_x, max_y, side, X_grids_taken, Y_grids_taken, x_pos, y_pos, rerun = true;
+  var size, color;
+  var score=0;
+  var ctrl = document.getElementById("ctrl");
+  var ctrlc = document.getElementById("ctrlc");
+  function drawNew(){
+    do{
+      rerun = false;
+      side = Math.floor(Math.random()*86) + 15;
+      side2 = side;
+      if(size) side2 = Math.floor(Math.random()*86) + 15;
+      X_grids_taken = Math.ceil(side/unitWidth);
+      Y_grids_taken = Math.ceil(side2/unitHeight);
+      max_x = X_grids_count - X_grids_taken;
+      max_y = Y_grids_count - Y_grids_taken;
+  
+      x_pos =  max_x-Math.floor(Math.random()*(max_x));
+      y_pos =  max_y-Math.floor(Math.random()*(max_y));
+      for(var a=0; a<X_grids_taken; a++){
+        for(var b=0; b<Y_grids_taken; b++){
+          if(gridArray[x_pos+a][y_pos+b]) rerun = true;
+        }
+      }
+    }
+    while(rerun);
+    for(var r=0; r<X_grids_taken; r++){
+      for(var c=0; c<Y_grids_taken; c++){
+        gridArray[x_pos+r][y_pos+c] = 1;
+      }
+    }
+    var actualXPos = x_pos*unitWidth,
+      actualYPos = y_pos*unitHeight;
+    
+    var newC = document.createElement("DIV");
+   
+    newC.style.width = side +"px";
+    newC.style.height = side2 +"px";
+    newC.style.left = actualXPos + "px";
+    newC.style.top = actualYPos + "px";
+    newC.style.zIndex = score;
+    if(color) newC.style.backgroundColor = "rgb(" + (Math.random()*150 + 106) + ", " + (Math.random()*150 + 106) + ", " + (Math.random()*150 + 106) + ")";
+    newC.addEventListener("click", judge);
+    ctrl.appendChild(newC);
+  }
+  
+  function uncover(){
+    ctrlc.style.display = "none";
+  }
+  // Action when circle is clicked
+  function judge(){
+    if (this.style.zIndex == score){
+      score++;
+      ctrlc.style.display = "block";
+      ctrlc.innerHTML="<p>ROUND " + score + "</p>";
+      window.setTimeout(drawNew, 1500);
+      window.setTimeout(uncover, 1500);
+    }
+    else {
+      size=false;
+      color=false;
+      ctrl.innerHTML="<h2>&#60;&#47;3</h2><p>GAME OVER</p><p> SCORE: " + score + "</p>";
+      var replayButton = document.createElement("BUTTON");
+      replayButton.innerHTML = "replay";
+      replayButton.addEventListener("click", homescreen);
+      ctrl.appendChild(replayButton);
+    }
+  }
+  function homescreen(){
+    ctrl.innerHTML = "<h2>MEMORY GAME</h2>";
+    color = false;
+    size = false;
+    var normal = document.createElement("BUTTON");
+    normal.innerHTML = "Vanilla";
+    normal.addEventListener("click", start);
+    ctrl.appendChild(normal);
+    
+    var color = document.createElement("BUTTON");
+    color.addEventListener("click", colorMode);
+    color.addEventListener("click", start);
+    color.innerHTML = "Colorful";
+    ctrl.appendChild(color);
+    
+    var shape = document.createElement("BUTTON");
+    shape.addEventListener("click", shapeMode);
+    shape.addEventListener("click", start);
+    shape.innerHTML = "Ovals";
+    ctrl.appendChild(shape);
+    
+    var colorshape = document.createElement("BUTTON");
+    colorshape.addEventListener("click", colorshapeMode);
+    colorshape.addEventListener("click", start);
+    colorshape.innerHTML = "Color + Shape";
+    ctrl.appendChild(colorshape);
+  }
+  function start(){
+    console.log("yes");
+    ctrl.innerHTML="";
+    for(var i=0;i<X_grids_count;i++){
+      for(var j=0;j<Y_grids_count;j++){
+        gridArray[i][j]=0;
+  	  }
+    }
+    score=0;
+    drawNew();
+  }
+  function colorMode(){
+    color=true;
+  }
+  function shapeMode(){
+    size=true;
+  }
+  function colorshapeMode(){
+    color=true;
+    size=true;
+  }
+  homescreen();
+</script>
+</body>
+</html>
