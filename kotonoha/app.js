@@ -1798,10 +1798,35 @@ async function initializePersistence() {
 }
 
 async function extractFromUrl(url) {
+  let browserHtml = "";
+  // Strategy 1: server-side proxy (same-origin, no CORS, works for domestic sites)
+  try {
+    const proxyResp = await fetch("./api/fetch", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ url }),
+    });
+    const proxyData = await proxyResp.json();
+    if (proxyData.html) { browserHtml = proxyData.html; }
+  } catch (e) { console.warn("Strategy 1 (server proxy) failed:", e.message); }
+  // Strategy 2: CORS proxy for overseas sites
+  if (!browserHtml) {
+    try {
+      const corsResp = await fetch("https://corsproxy.io/?" + encodeURIComponent(url));
+      if (corsResp.ok) browserHtml = await corsResp.text();
+    } catch (e) { console.warn("Strategy 2 (corsproxy.io) failed:", e.message); }
+  }
+  // Strategy 3: direct fetch (works for same-origin or CORS-enabled)
+  if (!browserHtml) {
+    try {
+      const directResp = await fetch(url);
+      if (directResp.ok) browserHtml = await directResp.text();
+    } catch (e) { console.warn("Strategy 3 (direct) failed:", e.message); }
+  }
   const response = await fetch("./api/extract", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ url }),
+    body: JSON.stringify({ url, html: browserHtml || undefined }),
   });
   const payload = await response.json().catch(() => ({}));
   if (payload.pdf) return extractFromPdf(url);

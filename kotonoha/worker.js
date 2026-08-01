@@ -924,7 +924,9 @@ async function fetchFreeDictionaryEntries(candidate) {
 
 async function lookupWord(candidate, provided = null) {
   try {
-    const freeDictionaryPromise = fetchFreeDictionaryEntries(candidate);
+    var le = globalThis.__kotonohaDict && globalThis.__kotonohaDict.get(candidate);
+    if (le) return [le[0], le[1], le[2], le[3] || 5, le[4] || null, candidate];
+    const freeDictionaryPromise = fetchFreeDictionaryEntries(candidate).catch(function(){ return []; });
     const jishoPromise = fetch(`https://jisho.org/api/v1/search/words?keyword=${encodeURIComponent(candidate)}`, {
       headers: { "accept": "application/json" },
       signal: AbortSignal.timeout(8_000),
@@ -952,7 +954,10 @@ async function lookupWord(candidate, provided = null) {
 }
 
 async function extractWords(url, env) {
-  const { html, finalUrl } = await fetchHtml(url);
+  var finalUrl = url;
+  var html = globalThis.__browserHtml;
+  if (html) { globalThis.__browserHtml = undefined; }
+  else { var f = await fetchHtml(url); html = f.html; finalUrl = f.finalUrl; }
   const pageTitle = titleFromHtml(html, new URL(finalUrl).hostname);
   const rawStructuredWords = extractStructuredWords(html);
   const structuredWords = [];
@@ -1171,12 +1176,37 @@ export default {
         return json({ error: "セーブデータを操作できませんでした。" }, 500);
       }
     }
+
+    if (url.pathname === "/api/fetch" && request.method === "POST") {
+      try {
+        const body = await request.json();
+        const targetUrl = String(body.url || "").trim();
+        if (!targetUrl || targetUrl.length > 2048) {
+          return json({ error: "URLをたしかめてください。" }, 400);
+        }
+        const resp = await fetch(targetUrl, {
+          headers: { "User-Agent": "Mozilla/5.0 (compatible; KotonohaProxy/1.0)" },
+          redirect: "follow",
+          signal: AbortSignal.timeout(15000),
+        });
+        if (!resp.ok) {
+          return json({ error: `ページを読みこめませんでした（` + resp.status + `）。` }, resp.status);
+        }
+        const html = await resp.text();
+        return json({ html });
+      } catch (error) {
+        const msg = error instanceof Error ? error.message : "fetch failed";
+        return json({ error: msg }, 502);
+      }
+    }
+
     if (url.pathname === "/api/extract" && request.method === "POST") {
       try {
         const body = await request.json();
         if (typeof body?.url !== "string" || body.url.length > 2048) {
           return json({ error: "URLをたしかめてください。" }, 400);
         }
+        if (body.html) globalThis.__browserHtml = body.html;
         return json(await extractWords(body.url, env));
       } catch (error) {
         const message = error instanceof Error ? error.message : "ページを読みこめませんでした。";
@@ -1195,6 +1225,25 @@ export default {
     return new Response("Not found", { status: 404 });
   },
 };
+
+
+;(function(){
+  if (typeof globalThis.__kotonohaDict !== "undefined") return;
+  var m = new Map();
+  try {
+    if (globalThis.__kotonohaDB) {
+      var rows = globalThis.__kotonohaDB.prepare("SELECT reading, surface, meaning, level, pos FROM words").all();
+      if (rows && rows.length) {
+        for (var i = 0; i < rows.length; i++) {
+          var r = rows[i];
+          m.set(r.reading, [r.reading, r.surface, [r.meaning], Number(r.level) || 5, r.pos || null]);
+          if (r.surface && r.surface !== r.reading) m.set(r.surface, [r.reading, r.surface, [r.meaning], Number(r.level) || 5, r.pos || null]);
+        }
+      }
+    }
+  } catch(e) {}
+  globalThis.__kotonohaDict = m;
+})();
 
 export {
   collectCandidates,
