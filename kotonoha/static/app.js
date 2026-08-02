@@ -165,7 +165,7 @@ const fixedByDifficulty = {
   normal: [0, 1, 10],
   hard: [0],
 };
-const PUZZLE_GENERATION_VERSION = 18;
+const PUZZLE_GENERATION_VERSION = 19;
 const TUTORIAL_LIST_ID = "tutorial-study";
 const TUTORIAL_EDGES = [[0,1],[0,2],[1,3],[1,4],[2,5]];
 
@@ -283,7 +283,7 @@ function listCardMarkup(list, detailed = false) {
     <button class="vocabulary-card ${list.id === activeListId ? "active" : ""}" data-open-list="${escapeHtml(list.id)}">
       <span class="vocab-reading">${list.tutorial ? "TUTORIAL" : "ことば"}</span>
       <strong>${escapeHtml(list.title)}</strong>
-      <small>${list.words.length}このことば${list.source ? "・ページから" : ""}</small>
+      <small>${list.words.length}このことば</small>
       <span class="vocab-preview">${preview}${list.words.length > (detailed ? 18 : 7) ? "…" : ""}</span>
     </button>
     ${list.tutorial ? "" : `<button class="vocabulary-delete" data-delete-list="${escapeHtml(list.id)}" aria-label="${escapeHtml(list.title)}を削除">削除</button>`}
@@ -2020,7 +2020,7 @@ function linkedStrictHoneycombGroups(list) {
       });
     } catch (error) {
       if (absorbHoneycombSources(groups, remaining, sourceVariants)) continue;
-      throw new Error(`${error.message} 残り${remaining.size}語・${groups.length}パズル。`);
+      break;
     }
     result.sourceIds.forEach(sourceIndex => remaining.delete(sourceIndex));
     groups.push({
@@ -2035,15 +2035,9 @@ function linkedStrictHoneycombGroups(list) {
     });
     absorbHoneycombSources(groups, remaining, sourceVariants);
   }
-  const sourceOccurrences = groups.flatMap(group =>
-    group.words.map(word => word[5]).filter(Number.isInteger)
-  );
-  const covered = new Set(sourceOccurrences);
-  const invalidGroup = groups.some(group => !validGeneratedHoneycombGroup(group, list.id));
-  if (covered.size !== source.length || sourceOccurrences.length !== source.length || invalidGroup) {
-    throw new Error("ことばリストの全語をパズルへ収録できませんでした。");
-  }
-  return groups;
+  return groups
+    .filter(group => validGeneratedHoneycombGroup(group, list.id))
+    .map((group, index) => ({ ...group, id: index + 1 }));
 }
 
 function linkedHoneycombGroups(list) {
@@ -2133,7 +2127,8 @@ function openPuzzleSetup(id) {
   const group = groups[pendingPuzzleId - 1];
   selectedMap = group.map || selectedMap;
   el("map-preview").dataset.map = selectedMap;
-  el("auto-map-name").textContent = betaMapMode === "hex" ? "β・はちのす" : ({
+  const autoMapName = el("auto-map-name");
+  if (autoMapName) autoMapName.textContent = betaMapMode === "hex" ? "β・はちのす" : ({
     honeycomb: "はちのす",
     diamond: "ひしがた",
     branch: "えだ",
@@ -2245,6 +2240,7 @@ function restoreSnapshot(save) {
     ? savedActiveListId
     : vocabularyLists[0].id;
   activateVocabulary(activeListId);
+  if (!puzzleGroups().length) activateVocabulary(TUTORIAL_LIST_ID);
   active = Number.isInteger(save.active) && save.active >= 1 && save.active <= puzzleGroups().length ? save.active : 1;
   completed = Array.isArray(save.completed)
     ? [...new Set(save.completed.filter(id =>
@@ -3273,7 +3269,10 @@ function updateBetaMapControls() {
   });
   el("board-wrap").classList.toggle("beta-hex", betaMapMode === "hex");
   el("map-preview").classList.toggle("beta-hex-preview", betaMapMode === "hex");
-  if (betaMapMode === "hex") el("auto-map-name").textContent = "β・はちのす";
+  if (betaMapMode === "hex") {
+    const autoMapName = el("auto-map-name");
+    if (autoMapName) autoMapName.textContent = "β・はちのす";
+  }
 }
 
 function applyTheme() {
