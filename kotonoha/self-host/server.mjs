@@ -46,7 +46,6 @@ class D1Statement {
   }
 }
 
-globalThis.__kotonohaDB = { prepare(sql) { return sqlite.prepare(sql); }, exec(sql) { return sqlite.exec(sql); } };
 const DB = {
   prepare(sql) {
     return new D1Statement(sqlite, sql);

@@ -895,14 +895,15 @@ function normalizedDictionaryEntry(entry, exactForm) {
 }
 
 function preferredFreeDictionaryEntry(entries, partText, candidate) {
+  const availableEntries = Array.isArray(entries) ? entries : [];
   const normalizedPartText = String(partText || "");
   if (/\bverb\b|Godan|Ichidan|Suru|Kuru/i.test(normalizedPartText)) {
-    return entries.find(entry => entry.partOfSpeech === "verb") || null;
+    return availableEntries.find(entry => entry.partOfSpeech === "verb") || null;
   }
   if (/adjective/i.test(normalizedPartText) || candidate.endsWith("い")) {
-    return entries.find(entry => entry.partOfSpeech === "adjective") || null;
+    return availableEntries.find(entry => entry.partOfSpeech === "adjective") || null;
   }
-  return entries.find(entry => entry.partOfSpeech === "noun") || entries[0] || null;
+  return availableEntries.find(entry => entry.partOfSpeech === "noun") || availableEntries[0] || null;
 }
 
 async function fetchFreeDictionaryEntries(candidate) {
@@ -914,7 +915,7 @@ async function fetchFreeDictionaryEntries(candidate) {
         signal: AbortSignal.timeout(10_000),
       },
     );
-    if (!response.ok) return null;
+    if (!response.ok) return [];
     const payload = await response.json();
     return Array.isArray(payload?.entries) ? payload.entries : [];
   } catch {
